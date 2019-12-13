@@ -3,15 +3,15 @@
 	<el-col id="dee">	
 			<h3 class="login-title">后台登陆管理系统</h3>
 		<el-form-item prop="username">
-			<el-input type="text" style="width:30%" placeholder="请输入账号"  @input="change($event)"/>
+			<el-input type="text" style="width:30%" placeholder="请输入账号" v-model="username"  @input="change($event)"/>
 		</el-form-item> 
 		<el-form-item prop="password">
-			<el-input type="password" style="width:30%" placeholder="请输入密码"  @input="change($event)"/>
+			<el-input type="password" style="width:30%" placeholder="请输入密码" v-model="password"  @input="change($event)"/>
 		</el-form-item>
 		<el-form-item>
 			<el-checkbox>记住密码</el-checkbox>
 		</el-form-item>
-		<el-button type="primary" >登陆</el-button>
+		<el-button type="primary" @click="post">登陆</el-button>
 	</el-col>	
 </el-form>
 </template>
@@ -21,10 +21,34 @@
 	  props: {
 	    msg: String
 	  },
-	  change (e) {
-		  console.log(e)
-	        this.$forceUpdate()
-	      },
+	 
+	  data(){
+		  return {
+			  username:"",
+			  password:""
+		  }
+	  },
+	  methods:{
+		  change:function (e) {
+		        this.$forceUpdate()
+		      },
+			  post:function(){
+				  // console.log("post");
+				  // this.$http.post("http://localhost:8080/login?userName=aaa&password=3",{
+					 //  username:"aaa",
+					 //  password:"3"
+					   this.$axios({
+					                 method:'post',
+					                 url:'http://localhost:8080/login?userName=aaa&password=3',
+					                 data:this.qs.stringify({    //这里是发送给后台的数据
+					                       username:"aaa",
+					                       password:"3"
+					                 })
+					             }).then((response) =>{          //这里使用了ES6的语法
+					                 console.log(response)       //请求成功返回的数据
+					             })
+			  }
+	  }
 	}	
 </script>
 	
