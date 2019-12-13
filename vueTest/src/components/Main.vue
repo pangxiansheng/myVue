@@ -1,9 +1,15 @@
 <template>
-	<div>hello vue!</div>
+    <div>
+      首页
+    </div>
 </template>
 
 <script>
+    export default {
+        name: "Main"
+    }
 </script>
 
-<style>
+<style scoped>
+
 </style>
