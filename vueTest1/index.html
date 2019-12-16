@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<div id="app">
+			{{message}}
+			<p v-html="red">{{red}}</p>
+			<div v-bind:class="color">wwww....</div>
+		</div>
+		<script>
+			var data={message:'hello vue'};
+			var app=new Vue({
+				el:'#app',
+				data:{
+					message:'1111',
+					red:'<span style="color:red">this is a vue</span>',
+					color:'red'
+				}
+			})
+			data.message="1111"
+			app.$watch("message",function(newVal ,oldVal){
+				console.log(newVal,oldVal)
+			})
+			app.$data.message='test'
+		</script>
+	</head>
+	<body>
+		
+	</body>
+	<style>
+		.red{color:red}
+	</style>
+</html>
