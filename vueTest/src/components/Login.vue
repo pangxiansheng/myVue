@@ -37,13 +37,14 @@
 				  // this.$http.post("http://localhost:8080/login?userName=aaa&password=3",{
 					 //  username:"aaa",
 					 //  password:"3"
+					// var data="?userName=aaa&password=3";
 					   this.$axios({
 					                 method:'post',
-					                 url:'http://localhost:8080/login?userName=aaa&password=3',
-					                 data:this.qs.stringify({    //这里是发送给后台的数据
-					                       username:"aaa",
-					                       password:"3"
-					                 })
+					                 url:'api/login',
+					                 params:{
+										 userName:'aaaa',
+										 password:'111'
+									 }
 					             }).then((response) =>{          //这里使用了ES6的语法
 					                 console.log(response)       //请求成功返回的数据
 					             })
