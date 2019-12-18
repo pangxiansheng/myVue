@@ -11,13 +11,16 @@
 		<el-form-item>
 			<el-checkbox>记住密码</el-checkbox>
 		</el-form-item>
+		<router-link to="/Main">Go to Foo</router-link>
 		<el-button type="primary" @click="post">登陆</el-button>
 	</el-col>	
 </el-form>
 </template>
 <script>
 	export default {
-	  name: '',
+	  components:{
+		  
+	  },
 	  props: {
 	    msg: String
 	  },
@@ -42,11 +45,12 @@
 					                 method:'post',
 					                 url:'api/login',
 					                 params:{
-										 userName:'aaaa',
-										 password:'111'
+										 userName:this.username,
+										 password:this.password
 									 }
 					             }).then((response) =>{          //这里使用了ES6的语法
 					                 console.log(response)       //请求成功返回的数据
+									 this.$router.push(Main)
 					             })
 			  }
 	  }
